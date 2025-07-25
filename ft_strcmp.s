@@ -28,4 +28,4 @@ ft_strcmp:
 
 .equal:
     xor     eax, eax     ; si les chaînes sont égales, retourne 0
-    retm
+    ret

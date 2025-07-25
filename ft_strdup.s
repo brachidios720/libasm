@@ -1,8 +1,8 @@
 global  ft_strdup
 
-externe ft_strlen
-externe malloc
-externe ft_strcpy
+extern ft_strlen
+extern malloc
+extern ft_strcpy
 
 section .text
 

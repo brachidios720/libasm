@@ -2,7 +2,7 @@ NAME = libasm.a
 SRC = ft_strlen.s \
 		ft_strcpy.s \
 		ft_strcmp.s \
-		ft_strdup.s \	
+		ft_strdup.s 	
 
 OBJ = $(SRC:.s=.o)
 
@@ -12,7 +12,7 @@ $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 %.o: %.s
-	nasm -f elf64 $< -o $@
+	nasm -f elf64 -DPIC $< -o $@
 
 clean:
 	rm -f $(OBJ) test
