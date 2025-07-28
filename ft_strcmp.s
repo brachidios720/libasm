@@ -4,7 +4,7 @@ section .text
 
 ft_strcmp: 
     xor     rax, rax        ; rax = 0
-    xor     rcx, rcx        ; rcx resulat 
+    xor     rcx, rcx        ; rcx incrementeur 
 
 .loop: 
     mov     al, BYTE [rdi + rcx] ; charge le caractère de la première chaîne
