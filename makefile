@@ -5,6 +5,11 @@ SRC = ft_strlen.s \
 		ft_strdup.s \
 		ft_read.s \
 		ft_write.s \
+		ft_list_size.s \
+		ft_list_sort.s \
+		ft_lst_new.s \
+		ft_list_push_front.s \
+		ft_list_remove_if.s
 
 OBJ = $(SRC:.s=.o)
 
@@ -23,3 +28,4 @@ fclean: clean
 	rm -f $(NAME) 
 
 re: fclean all
+

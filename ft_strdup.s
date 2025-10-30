@@ -16,7 +16,7 @@ ft_strdup:
     call   ft_strlen      ; get the length of the source string
     inc rax              ; increment length for null terminator
     mov rdi, rax         ; move length to rdi for allocation
-    call   malloc         ; allocate memory for the new string
+    call   malloc wrt ..plt        ; allocate memory for the new string
     
     test rax, rax
     je     .malloc_faile   ; check if allocation was successful
