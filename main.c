@@ -21,7 +21,7 @@ void    ft_list_sort(t_list **begin_list, int (*cmp)());
 void    ft_list_push_front(t_list **begin_list, void *data);
 t_list  *ft_lst_new(void *data);
 void    ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
-
+int     ft_atoi_base(char *str, char *base);
 
 int		cmp_str(char *a, char *b)
 {
@@ -176,5 +176,43 @@ int main(void)
     ft_list_push_front(&list, "42");
     printf("Après ajout de '42' : ");
     print_list(list); // attendu : 42 -> hello -> world -> NULL
+
+     printf("\n----ft_list_remove_if----\n");
+
+    // Liste d'exemple
+    t_list *lst = NULL;
+    ft_list_push_front(&lst, strdup("chat"));
+    ft_list_push_front(&lst, strdup("chien"));
+    ft_list_push_front(&lst, strdup("poisson"));
+    ft_list_push_front(&lst, strdup("chat"));
+    ft_list_push_front(&lst, strdup("oiseau"));
+    ft_list_push_front(&lst, strdup("chat"));
+
+    printf("Avant suppression :\n");
+    print_list(lst);
+
+    // Supprime tous les "chat"
+    ft_list_remove_if(&lst, "chat", (int (*)())cmp_str, free);
+
+    printf("\nAprès suppression des \"chat\" :\n");
+    print_list(lst);
+
+    // Test suppression d'un élément inexistant
+    ft_list_remove_if(&lst, "licorne", (int (*)())cmp_str, free);
+    printf("\nAprès tentative de suppression d'un élément inexistant :\n");
+    print_list(lst);
+
+    // Nettoyage mémoire
+    t_list *tmp;
+    while (lst)
+    {
+        tmp = lst->next;
+        free(lst->data);
+        free(lst);
+        lst = tmp;
+    }
+
+    printf("\nListe libérée.\n");
+    
     return 0;
 }
